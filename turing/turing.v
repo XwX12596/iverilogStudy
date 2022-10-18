@@ -1,5 +1,6 @@
 module turing (
     input clk,
+    input rstn,
     input [9:0] din
 );
 
@@ -9,7 +10,7 @@ reg [1:0] state = 2'b00;
 reg [9:0] r_din;
 integer i = 0;
 
-initial begin
+initial @(posedge rstn) begin
     r_din = din;
 end
 
@@ -50,6 +51,8 @@ begin
     begin
         if (r_din[i] == 1)
             r_din[i] = 0;
+        else if (r_din[i] == 0)
+            $finish;
     end
 end
 
@@ -59,16 +62,23 @@ endmodule
 
 module tb_turing;
 reg clk = 0;
-wire [9:0] din;
+reg rstn = 0;
+reg [9:0] din;
 integer i;
 
-assign din = 10'b00_1111_0_11_0;
+
 
 turing uut
 (
     .clk (clk),
+    .rstn(rstn),
     .din (din)
 );
+
+initial begin
+    din = 10'b00_1111_0_11_0;
+    #7 rstn = 1;
+end
 
 initial begin
     for (i = 0;i <= 25 ;i=i+1) begin
