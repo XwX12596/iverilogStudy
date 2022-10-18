@@ -14,4 +14,4 @@ flowchart TD
 
 ## 代码与结果
 
-具体见`turing.v`和`tb_turing.vcd`
+具体见`turing.v`和`turing.vcd`
