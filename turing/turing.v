@@ -1,8 +1,10 @@
 module turing (
-    input wire clk,
-    input wire[9:0] din
+    input clk,
+    input [9:0] din
 );
 
+wire clk;
+wire [9:0] din;
 reg [1:0] state = 2'b00;
 reg [9:0] r_din;
 integer i = 0;
@@ -75,7 +77,7 @@ initial begin
 end
 
 initial begin
-    $dumpfile("tb_turing.vcd");
+    $dumpfile("turing.vcd");
     $dumpvars(1, uut);
 end
 
