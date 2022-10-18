@@ -30,7 +30,7 @@ always @(posedge clk or negedge rstn) begin
             prd = 0;
             mct = 0;
             res = 0;
-        end
+    end
     else if(op == 2'b10) begin
         if (dig_2 > 0) begin
             if (dig_1 > 0) begin
@@ -56,14 +56,10 @@ always @(posedge clk or negedge rstn) begin
 end
 endmodule
 
-//~ `New testbench
+
 `timescale  1ns / 1ps
-
 module tb_miniALU;
-
-// miniALU Parameters
 parameter PERIOD  = 10;
-
 
 // miniALU Inputs
 reg   [1:0]  op                            = 0 ;
@@ -71,12 +67,10 @@ reg   [7:0]  dig_h                         = 0 ;
 reg   [7:0]  dig_l                         = 0 ;
 reg   clk                                  = 0 ;
 reg   rstn                                 = 0 ;
-
 // miniALU Outputs
 wire  [16:0]  prd                          ;
 wire  [7:0]  mct                           ;
 wire  [7:0]  res                           ;
-
 
 initial
 begin
