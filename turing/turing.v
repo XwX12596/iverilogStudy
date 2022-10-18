@@ -64,9 +64,7 @@ module tb_turing;
 reg clk = 0;
 reg rstn = 0;
 reg [9:0] din;
-integer i;
-
-
+parameter PERIOD = 20;
 
 turing uut
 (
@@ -81,9 +79,13 @@ initial begin
 end
 
 initial begin
-    for (i = 0;i <= 25 ;i=i+1) begin
-        #10 clk=~clk;
-    end
+    forever #10 clk=~clk;
+end
+
+always begin
+    #PERIOD;
+    if ($time >= PERIOD*25)
+        $finish;
 end
 
 initial begin
