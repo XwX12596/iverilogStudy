@@ -79,16 +79,20 @@ end
 
 initial
 begin
+    rstn = 1;
+
     op = 2'b10;
     dig_h = 8'b0010_1111;
     dig_l = 8'b0000_0111;
-    #(PERIOD);
-    rstn  =  1;
+    #(PERIOD) rstn  =  0;
+    #(PERIOD) rstn  =  1;
+
+    #(PERIOD*9)
+
+    op = 2'b11;
     dig_h = 8'b0000_0111;
     dig_l = 8'b0000_0010;
-    #(PERIOD*9);
-    op = 2'b11;
-    rstn  =  0;
+    #(PERIOD) rstn  =  0;
     #(PERIOD) rstn  =  1;
 end
 
