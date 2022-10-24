@@ -62,15 +62,15 @@ module tb_miniALU;
 parameter PERIOD  = 10;
 
 // miniALU Inputs
-reg   [1:0]  op                            = 0 ;
-reg   [7:0]  dig_h                         = 0 ;
-reg   [7:0]  dig_l                         = 0 ;
-reg   clk                                  = 0 ;
-reg   rstn                                 = 0 ;
+reg [1:0]  op = 0 ;
+reg [7:0]  dig_h = 0 ;
+reg [7:0]  dig_l = 0 ;
+reg clk = 0 ;
+reg rstn = 0 ;
 // miniALU Outputs
-wire  [16:0]  prd                          ;
-wire  [7:0]  mct                           ;
-wire  [7:0]  res                           ;
+wire  [16:0]  prd;
+wire  [7:0]  mct;
+wire  [7:0]  res;
 
 initial
 begin
