@@ -1,4 +1,5 @@
-*.out
-*.pdf
-*.vcd
-.vscode/
+# *.out
+# *.pdf
+# *.vcd
+# .vscode/
+!*.v
