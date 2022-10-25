@@ -2,4 +2,7 @@
 # *.pdf
 # *.vcd
 # .vscode/
+*
+!.gitignore
 !*.v
+!*.md
