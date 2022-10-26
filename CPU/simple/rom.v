@@ -7,7 +7,7 @@ reg [7:0]data;
 
 parameter
 INC_accum 	= 8'b01_000011,
-ADD_accum_3 = 8'b11_000011; 
+ADD_accum_3 = 8'b11_000011;
 
 always@(read or ena)
 if(read&&ena) begin
@@ -21,10 +21,10 @@ if(read&&ena) begin
 		6'b000101:data<=ADD_accum_3;
 		6'b000110:data<=ADD_accum_3;
 		6'b000111:data<=ADD_accum_3;
-		default: data<=6'bzzzzzz;
+		default: data<=8'bzzzzzzzz;
 	endcase
 end
 else
-	data<=6'bzzzzzz;
+	data<=8'bzzzzzzzz;
 
 endmodule

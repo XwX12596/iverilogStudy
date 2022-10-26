@@ -1,7 +1,7 @@
 `timescale 1ns/1ns
 module control(inc_pc, load_acc, load_pc,
- rd,wr, load_ir, datactl_ena, halt, clk1, 
- zero, ena, opcode );
+rd,wr, load_ir, datactl_ena, halt, clk1, 
+zero, ena, opcode );
 
 output inc_pc, load_acc, load_pc, rd, wr, load_ir;
 output datactl_ena, halt;
@@ -17,7 +17,7 @@ parameter 	JMP  = 2 'b00,
 			ADD  = 2 'b11;
 
 always @( negedge clk1 )
-if ( !ena )	begin	//½ÓÊÕµ½¸´Î»ĞÅºÅRST£¬½øĞĞ¸´Î»²Ù×÷	
+if ( !ena )	begin	//æ¥æ”¶åˆ°å¤ä½ä¿¡å·RSTï¼Œè¿›è¡Œå¤ä½æ“ä½œ	
 	state<=3'b000;
 	{inc_pc,load_acc,load_pc,rd}<=4'b0000;
 	{wr,load_ir,datactl_ena,halt}<=4'b0000;
@@ -34,24 +34,24 @@ else begin
 		{wr,load_ir,datactl_ena,halt}<=4'b0000;
 		state<=3'b010;
 	end
-	3'b010:	begin		// ¶ÁÒ»ÌõÖ¸Áî		
+	3'b010:	begin		// è¯»ä¸€æ¡æŒ‡ä»¤		
 		{inc_pc,load_acc,load_pc,rd}<=4'b0001;
-		{wr,load_ir,datactl_ena,halt}<=4'b0100;
+		{wr,load_ir,datactl_ena,halt}<=4'b0100; //rom -> register
 		state<=3'b011;
 	end
-	3'b011:begin		//next instruction address setup ·ÖÎöÖ¸Áî´ÓÕâÀï¿ªÊ¼		
-		{inc_pc,load_acc,load_pc,rd}<=4'b1000;
+	3'b011:begin		//next instruction address setup åˆ†ææŒ‡ä»¤ä»è¿™é‡Œå¼€å§‹		
+		{inc_pc,load_acc,load_pc,rd}<=4'b1000; //pc_addr++ (rom, counter)
 		{wr,load_ir,datactl_ena,halt}<=4'b0000;
 		state<=3'b100;
 	end
 
-	3'b100:	begin		//fetch oprand		
+	3'b100:	begin		//fetch operand		
 		if(opcode==JMP) begin
-			{inc_pc,load_acc,load_pc,rd}<=4'b0010;
-			{wr,load_ir,datactl_ena,halt}<=4'b0000;
+			{inc_pc, load_acc, load_pc, rd}<=4'b0010;  // prepare for pc_addr<=ir_addr
+			{wr, load_ir, datactl_ena, halt}<=4'b0000;
 		end
-		else if( opcode==ADD) begin//ÔİÊ±Ö»¼ÓÒ»µ÷Ö¸Áî£¿		
-			{inc_pc,load_acc,load_pc,rd}<=4'b0001;
+		else if(opcode==ADD) begin	
+			{inc_pc,load_acc,load_pc,rd}<=4'b0001; // prepare for read Reg
 			{wr,load_ir,datactl_ena,halt}<=4'b0000;
 		end	
 		else begin
@@ -61,20 +61,20 @@ else begin
 		state<=3'b101;
 	end
 
-	3'b101:		// operation
+	3'b101:		// operation // alu enabled!
 		begin
-		if ( opcode==ADD) begin //¹ıÒ»¸öÊ±ÖÓºóÓëÀÛ¼ÓÆ÷µÄÄÚÈİ½øĞĞÔËËã
-			{inc_pc,load_acc,load_pc,rd}<=4'b0101;
+		if ( opcode==ADD) begin
+			{inc_pc,load_acc,load_pc,rd}<=4'b0101; //read Reg into ALU and then set AL (changed)
 			{wr,load_ir,datactl_ena,halt}<=4'b0000;
 		end			
 		else if(opcode==INC||opcode==DEC)
 			begin
-			{inc_pc,load_acc,load_pc,rd}<=4'b0100;
-			{wr,load_ir,datactl_ena,halt}<=4'b0000;			
+			{inc_pc,load_acc,load_pc,rd}<=4'b0100;  // set AL (changed)
+			{wr,load_ir,datactl_ena,halt}<=4'b0000;
 			end
 		else if(opcode==JMP)
 			begin
-			{inc_pc,load_acc,load_pc,rd}<=4'b1010;
+			{inc_pc,load_acc,load_pc,rd}<=4'b1010; // pc_addr<=ir_addr
 			{wr,load_ir,datactl_ena,halt}<=4'b0000;
 			end	
 		else
@@ -86,9 +86,9 @@ else begin
 		end
 
 	3'b110:	begin	//idle			
-		if ( opcode==ADD||opcode==INC||opcode||DEC ) begin
+		if ( opcode==ADD||opcode==INC||opcode==DEC ) begin
 			{inc_pc,load_acc,load_pc,rd}<=4'b0001;
-			{wr,load_ir,datactl_ena,halt}<=4'b0010;
+			{wr,load_ir,datactl_ena,halt}<=4'b0010; // data output
 		end
 		else begin
 			{inc_pc,load_acc,load_pc,rd}<=4'b0000;

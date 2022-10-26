@@ -1,4 +1,4 @@
-// `include "cpu.v"
+`include "CPU.v"
 
 `timescale 1ns / 1ns
 `define PERIOD 100             // matches clk_gen.v
