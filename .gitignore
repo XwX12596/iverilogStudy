@@ -3,6 +3,7 @@
 # *.vcd
 # .vscode/
 *
+!*/
 !.gitignore
 !*.v
 !*.md
