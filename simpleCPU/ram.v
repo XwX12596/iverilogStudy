@@ -5,10 +5,10 @@ input [7:0]din;
 input read,write,ena;
 reg [7:0]data;
 
-reg [7:0]R_0 = 8'b1111_0000;
-reg [7:0]R_1 = 8'b1111_0001;
-reg [7:0]R_2 = 8'b1111_0010;
-reg [7:0]R_3 = 8'b1111_0011;
+reg [7:0]R_0 = 8'b0000_0000;
+reg [7:0]R_1 = 8'b0000_0001;
+reg [7:0]R_2 = 8'b0000_0010;
+reg [7:0]R_3 = 8'b0000_0011;
 
 always@(read or ena) begin
 	if(!ena) begin
