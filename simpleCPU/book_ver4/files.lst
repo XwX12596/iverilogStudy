@@ -1,0 +1,14 @@
+./adr.v
+./clk_gen.v
+./cpu.v
+./counter.v
+./cputop.v
+./alu.v
+./accum.v
+./rom.v
+./ram.v
+./machine.v
+./addr_decode.v
+./datactl.v
+./machinectl.v
+./register.v

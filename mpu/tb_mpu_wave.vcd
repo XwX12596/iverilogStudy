@@ -1,0 +1,43 @@
+$date
+	Sat Dec 03 20:46:21 2022
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb_mpc $end
+$var wire 9 ! out [8:0] $end
+$var reg 18 " instr [17:0] $end
+$scope module u_mpc $end
+$var wire 18 # instr [17:0] $end
+$var reg 1 $ func $end
+$var reg 8 % op1 [7:0] $end
+$var reg 8 & op2 [7:0] $end
+$var reg 9 ' out [8:0] $end
+$scope function code_add $end
+$var reg 1 ( add_func $end
+$var reg 8 ) code [7:0] $end
+$var reg 18 * instr [17:0] $end
+$var reg 8 + opr1 [7:0] $end
+$var reg 8 , opr2 [7:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b111 ,
+b1 +
+b11100000001 *
+b0 )
+1(
+b1000 '
+b111 &
+b1 %
+1$
+b11100000001 #
+b11100000001 "
+b1000 !
+$end
