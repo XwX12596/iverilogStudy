@@ -17,9 +17,9 @@ wire  [2:0]     opcode;
 
 //------------------------   cpu  ROM RAM--------------------------------------
 cpu   t_cpu (.clk(clock), .reset(reset_req), .halt(halt), .rd(rd),
-                                       .wr(wr), .addr(addr), .data(data),
-                                       .opcode(opcode), .fetch(fetch),
-                                       .ir_addr(ir_addr), .pc_addr(pc_addr));
+                                        .wr(wr), .addr(addr), .data(data),
+                                        .opcode(opcode), .fetch(fetch),
+                                        .ir_addr(ir_addr), .pc_addr(pc_addr));
 
 ram   t_ram  (.addr(addr[9:0]),.read(rd),.write(wr),.ena(ram_sel),.data(data));
 
@@ -95,7 +95,6 @@ task test3;
   end
  endtask
   
-   
 task sys_reset;
   begin
                     reset_req = 0;
@@ -123,7 +122,7 @@ begin: MONITOR
           //HERE DATA HAS BEEN CHANGED T-CPU-M-REGISTER.DATA
           end
       end
-       
+
     2: 
       begin
         $display("\n*** RUNNING CPUtest2 - The Advanced CPU Diagnostic Program ***");

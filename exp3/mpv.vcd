@@ -1,0 +1,89 @@
+$date
+	Mon Nov 28 17:54:35 2022
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb_mpc $end
+$var wire 9 ! out [8:0] $end
+$var reg 18 " instr [17:0] $end
+$scope module u_mpc $end
+$var wire 18 # instr [17:0] $end
+$var reg 1 $ func $end
+$var reg 8 % op1 [7:0] $end
+$var reg 8 & op2 [7:0] $end
+$var reg 9 ' out [8:0] $end
+$scope function code_add $end
+$var reg 1 ( add_func $end
+$var reg 8 ) code [7:0] $end
+$var reg 17 * code_add [16:0] $end
+$var reg 18 + instr [17:0] $end
+$var reg 8 , opr1 [7:0] $end
+$var reg 8 - opr2 [7:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 -
+b0 ,
+b0 +
+b10000000000000000 *
+b0 )
+1(
+b0 '
+b0 &
+b0 %
+1$
+b0 #
+b0 "
+b0 !
+$end
+#20000
+b11111101 !
+b11111101 '
+b1110010 &
+b10001011 %
+b10111001010001011 *
+b1110010 -
+b10001011 ,
+b111001010001011 +
+b111001010001011 "
+b111001010001011 #
+#30000
+b11001 !
+b11001 '
+0$
+b111001010001011 *
+0(
+b1 )
+b10111001010001011 +
+b10111001010001011 "
+b10111001010001011 #
+#40000
+b10001100 !
+b10001100 '
+1$
+b1 &
+b10000000110001011 *
+b1 -
+1(
+b10 )
+b100111001010001011 +
+b100111001010001011 "
+b100111001010001011 #
+#50000
+b10001010 !
+b10001010 '
+0$
+b110001011 *
+0(
+b11 )
+b110111001010001011 +
+b110111001010001011 "
+b110111001010001011 #
+#60000
