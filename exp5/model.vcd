@@ -1,0 +1,100 @@
+$date
+	Mon Dec 26 12:46:30 2022
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb_pla $end
+$var wire 1 ! y $end
+$var wire 8 " W2 [7:0] $end
+$var wire 8 # W1 [7:0] $end
+$var reg 3 $ x1 [2:0] $end
+$var reg 3 % x2 [2:0] $end
+$scope module u_pla $end
+$var wire 3 & x1 [2:0] $end
+$var wire 3 ' x2 [2:0] $end
+$var reg 8 ( W1 [7:0] $end
+$var reg 8 ) W2 [7:0] $end
+$var reg 8 * sum [7:0] $end
+$var reg 1 ! y $end
+$scope function w1w2 $end
+$var reg 2 + rand [1:0] $end
+$var reg 8 , v1 [7:0] $end
+$var reg 8 - v2 [7:0] $end
+$var reg 8 . w1 [7:0] $end
+$var reg 16 / w1w2 [15:0] $end
+$var reg 8 0 w2 [7:0] $end
+$var integer 32 1 k [31:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b111101 1
+b10101 0
+b1100101100010101 /
+b11001011 .
+b1 -
+b1 ,
+b10 +
+b101010 *
+b10101 )
+b11001011 (
+b10 '
+b0 &
+b10 %
+b0 $
+b11001011 #
+b10101 "
+1!
+$end
+#10000
+b10101 *
+b1 %
+b1 '
+#20000
+0!
+b10010110 *
+b0 %
+b0 '
+b10 $
+b10 &
+#30000
+b11000000 *
+b10 %
+b10 '
+#40000
+b11100000 *
+b1 %
+b1 '
+b1 $
+b1 &
+#50000
+1!
+b1011110 *
+b111 %
+b111 '
+#60000
+0!
+b11010101 *
+b11 %
+b11 '
+b10 $
+b10 &
+#70000
+b10010011 *
+b111 %
+b111 '
+b0 $
+b0 &
+#80000
+b11110101 *
+b10 %
+b10 '
+b1 $
+b1 &
+#100000

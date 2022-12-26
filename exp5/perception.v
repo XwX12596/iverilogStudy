@@ -1,26 +1,30 @@
 module perc(clk, data_in, data_out);
-parameter width = 4;
+parameter width = 8;
 input wire clk;
 input wire [width-1:0] data_in;
 output reg data_out;
-reg [3:0] weigh[width - 1:0];
-reg [7:0] sum = 0;
+reg [7:0] weigh[width - 1:0];
+reg [11:0] sum = 0;
 integer i = 0;
 
 initial begin
-    weigh[0] <= 4'b0001;
-    weigh[1] <= 4'b0010;
-    weigh[2] <= 4'b0100;
-    weigh[3] <= 4'b1000;
+    weigh[0] <= 8'b00000011;
+    weigh[1] <= 8'b00000110;
+    weigh[2] <= 8'b00001100;
+    weigh[3] <= 8'b00011000;
+    weigh[4] <= 8'b00110000;
+    weigh[5] <= 8'b01100000;
+    weigh[6] <= 8'b11000000;
+    weigh[7] <= 8'b11000000;
 end
 
 always @(posedge clk) begin
     for (i = 0; i < width; i = i + 1) begin
         sum = sum + data_in[i] * weigh[i];
-        $display("i is %d, data_in is %d, weigh is %d", i, data_in[i], weigh[i]);
+        $display("i is %d, data_in is %d, weigh is %8b", i, data_in[i], weigh[i]);
     end
-    $display("sum is %d", sum);
-    if (sum >= 5'b01010) begin
+    $display("sum is %b", sum);
+    if (sum >= 8'b11111111) begin
         data_out = 1;
         $display("Active!");
     end
@@ -40,7 +44,7 @@ module tb_perc;
 
 // perc Parameters
 parameter PERIOD = 10;
-parameter width  = 4;
+parameter width  = 8;
 
 // perc Inputs
 reg   clk                                  = 0 ;
@@ -66,7 +70,8 @@ u_perc (
 
 initial
 begin
-    data_in = 4'b1011;
+    data_in = 8'b1111_0000;
+    // data_in = 8'b00001011;
     #(PERIOD)
     $finish;
 end
